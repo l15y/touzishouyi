@@ -1,0 +1,90 @@
+<meta content="True" name="HandheldFriendly" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="/js/vue.js"></script>
+<link rel="stylesheet" href="/css/ELEMENT.css" />
+<script src="/js/ELEMENT.js"></script>
+<script src="/js/jquery.min.js"></script>
+<title>表单填写系统-{{task}}</title>
+<style>
+    .el-main {
+        background-color: #e9eef3;
+        color: #333;
+        text-align: center;
+    }
+    
+    .box1 {
+        display: flex;
+        justify-content: center;
+        align-items: Center;
+    }
+    
+    .el-icon-minus,
+    .el-icon-plus {
+        line-height: inherit;
+        ;
+    }
+</style>
+<script>
+    function get(f) {
+        $.ajax({
+            method: "POST",
+            url: "/get/{{task}}",
+            success: function(data, xhr) {
+                window.data = data
+                f(data);
+            },
+            error: function() {
+                show_result(false);
+            }
+        });
+    }
+
+    function send() {
+        $.ajax({
+            method: "POST",
+            url: "/write",
+            data: {
+                task: "{{task}}",
+                data: objectToArray(),
+            },
+            success: function(data, xhr) {
+                alert("成功");
+            },
+            error: function() {
+                alert("异常,请重试");
+            }
+        });
+    }
+
+    function get_type(s) {}
+</script>
+
+<div id="app" v-cloak style="width: 50%;margin: 22%;margin-top: 100px;">
+
+    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+
+        <template v-for="n in formData.length">
+            <el-form-item v-if="formData[n-1]" :label="formData[n-1]"  :prop="formData[n-1]">
+                <el-input
+                v-model="ruleForm[formData[n-1]]" autocomplete="off"></el-input>
+            </el-form-item>
+          </template>
+        <el-form-item>
+            <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+            <el-button @click="resetForm('ruleForm')">重置</el-button>
+        </el-form-item>
+    </el-form>
+</div>
+<script src="/js/main.js"></script>
+
+<script>
+    $(document).ready(() => {
+        window.onresize = function() {
+            document.body.style.zoom = document.documentElement.clientWidth / 1050
+        }
+        window.onresize()
+    })
+</script>

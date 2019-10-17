@@ -1,0 +1,88 @@
+<meta content="True" name="HandheldFriendly" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="js/vue.js"></script>
+<link rel="stylesheet" href="css/ELEMENT.css" />
+<script src="js/ELEMENT.js"></script>
+<script src="js/jquery.min.js"></script>
+<title>收益率计算</title>
+<style>
+    .el-main {
+        background-color: #e9eef3;
+        color: #333;
+        text-align: center;
+    }
+    
+    .el-input {
+        display: inline-block;
+        /* width: 100px; */
+    }
+    
+    .el-icon-minus,
+    .el-icon-plus {
+        line-height: inherit;
+        ;
+    }
+</style>
+<script>
+</script>
+
+<div id="app" v-cloak style="margin: 100px;margin-top: 100px;">
+    <template>
+        定存<br>
+        <el-slider v-model="dc" @input="calc" show-input :format-tooltip="formatTooltip" step="0.1"></el-slider>
+        下限<el-input-number v-model="dc_d"></el-input-number>
+        上限<el-input-number v-model="dc_u"></el-input-number>
+        <br>
+        基金<br>
+        <el-slider v-model="jj" @input="calc" show-input :format-tooltip="formatTooltip" step="0.1"></el-slider>
+        下限<el-input-number v-model="jj_d"></el-input-number>
+        上限<el-input-number v-model="jj_u"></el-input-number>
+        <br>
+        股票<el-input v-model="gp" :disabled="true"></el-input>
+        下限<el-input-number v-model="gp_d"></el-input-number>
+        上限<el-input-number v-model="gp_u"></el-input-number>
+        <br>
+        总合:
+        <br>下限:
+        {{(dc*dc_d+jj*jj_d+gp*gp_d)/100}}%
+        <br>上限:
+        {{(dc*dc_u+jj*jj_u+gp*gp_u)/100}}%
+    </template>
+</div>
+<script>
+    tableData_ = eval()
+    app = new Vue({
+        el: '#app',
+        // delimiters: ['{[', ']}'],
+        data() {
+            return {
+                dc: 10,
+                jj: 70,
+                gp: 20,
+                dc_d: 2,
+                dc_u: 4.5,
+                jj_d: -10,
+                jj_u: 20,
+                gp_d: -30,
+                gp_u: 100,
+            };
+        },
+        methods: {
+            calc() {
+                this.gp = 100 - this.jj - this.dc
+                if (this.gp < 0)
+                    this.jj = 0
+            },
+            formatTooltip(val) {
+                return val + "%";
+            }
+
+        }
+    });
+</script>
+
+<script>
+</script>
