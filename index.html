@@ -90,7 +90,7 @@
             calc() {
                 this.gp = 100 - this.jj - this.dc
                 if (this.gp < 0)
-                    this.jj = 0
+                    this.jj = 100 - this.dc
             },
             formatTooltip(val) {
                 return val + "%";
