@@ -25,34 +25,45 @@
         line-height: inherit;
         ;
     }
+    
+    .el-slider--with-input {
+        display: inline-block;
+        width: calc(100% - 4.5em - 16px);
+        position: relative;
+        top: 0.8em;
+    }
 </style>
 <script>
 </script>
 
-<div id="app" v-cloak style=";margin-top: 100px;">
+<div id="app" v-cloak style="margin-top: 50px;line-height: 3em;">
     <template>
         定存<br>
-        <el-slider v-model="dc" @input="calc" show-input :format-tooltip="formatTooltip"></el-slider>
-        下限<el-input-number v-model="dc_d" step=0.1></el-input-number>
+        投入比例 <el-slider v-model="dc" @input="calc" show-input :format-tooltip="formatTooltip"></el-slider>
+        上限 <el-input-number v-model="dc_u" step=0.1></el-input-number>
         <br>
-        上限<el-input-number v-model="dc_u" step=0.1></el-input-number>
+        下限 <el-input-number v-model="dc_d" step=0.1></el-input-number>
+        <br>
         <br>
         基金<br>
-        <el-slider v-model="jj" @input="calc" show-input :format-tooltip="formatTooltip"></el-slider>
-        下限<el-input-number v-model="jj_d" step=0.2></el-input-number>
+        投入比例 <el-slider v-model="jj" @input="calc" show-input :format-tooltip="formatTooltip"></el-slider>
+        上限 <el-input-number v-model="jj_u" step=0.2></el-input-number>
         <br>
-        上限<el-input-number v-model="jj_u" step=0.2></el-input-number>
+        下限 <el-input-number v-model="jj_d" step=0.2></el-input-number>
+        <br>
         <br>
         股票<el-input v-model="gp" :disabled="true"></el-input>
-        下限<el-input-number v-model="gp_d"></el-input-number>
+        上限 <el-input-number v-model="gp_u"></el-input-number>
         <br>
-        上限<el-input-number v-model="gp_u"></el-input-number>
-        <br>
-        总合:
-        <br>下限:
-        {{(dc*dc_d+jj*jj_d+gp*gp_d)/100}}%
-        <br>上限:
-        {{(dc*dc_u+jj*jj_u+gp*gp_u)/100}}%
+        下限 <el-input-number v-model="gp_d"></el-input-number>
+        <el-card class="box-card" style="margin: 0 auto;width: 16em;">
+               
+            资产总体回报:
+            <br>上限:
+            {{(dc*dc_u+jj*jj_u+gp*gp_u)/100}}%
+            <br>下限:
+            {{(dc*dc_d+jj*jj_d+gp*gp_d)/100}}%
+        </el-card>
     </template>
 </div>
 <script>
