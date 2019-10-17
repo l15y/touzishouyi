@@ -29,17 +29,17 @@
 <script>
 </script>
 
-<div id="app" v-cloak style="margin: 100px;margin-top: 100px;">
+<div id="app" v-cloak style=";margin-top: 100px;">
     <template>
         定存<br>
-        <el-slider v-model="dc" @input="calc" show-input :format-tooltip="formatTooltip" step="0.1"></el-slider>
-        下限<el-input-number v-model="dc_d"></el-input-number>
-        上限<el-input-number v-model="dc_u"></el-input-number>
+        <el-slider v-model="dc" @input="calc" show-input :format-tooltip="formatTooltip"></el-slider>
+        下限<el-input-number v-model="dc_d" step=0.1></el-input-number>
+        上限<el-input-number v-model="dc_u" step=0.1></el-input-number>
         <br>
         基金<br>
-        <el-slider v-model="jj" @input="calc" show-input :format-tooltip="formatTooltip" step="0.1"></el-slider>
-        下限<el-input-number v-model="jj_d"></el-input-number>
-        上限<el-input-number v-model="jj_u"></el-input-number>
+        <el-slider v-model="jj" @input="calc" show-input :format-tooltip="formatTooltip"></el-slider>
+        下限<el-input-number v-model="jj_d" step=0.2></el-input-number>
+        上限<el-input-number v-model="jj_u" step=0.2></el-input-number>
         <br>
         股票<el-input v-model="gp" :disabled="true"></el-input>
         下限<el-input-number v-model="gp_d"></el-input-number>
