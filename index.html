@@ -34,15 +34,18 @@
         定存<br>
         <el-slider v-model="dc" @input="calc" show-input :format-tooltip="formatTooltip"></el-slider>
         下限<el-input-number v-model="dc_d" step=0.1></el-input-number>
+        <br>
         上限<el-input-number v-model="dc_u" step=0.1></el-input-number>
         <br>
         基金<br>
         <el-slider v-model="jj" @input="calc" show-input :format-tooltip="formatTooltip"></el-slider>
         下限<el-input-number v-model="jj_d" step=0.2></el-input-number>
+        <br>
         上限<el-input-number v-model="jj_u" step=0.2></el-input-number>
         <br>
         股票<el-input v-model="gp" :disabled="true"></el-input>
         下限<el-input-number v-model="gp_d"></el-input-number>
+        <br>
         上限<el-input-number v-model="gp_u"></el-input-number>
         <br>
         总合:
