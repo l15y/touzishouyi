@@ -1,0 +1,30 @@
+{
+    "scope": "/",
+    "name": "收益率计算",
+    "short_name": "xlaoyu-blog",
+    "start_url": "/",
+    "display": "standalone",
+    "description": "投资收益率计算",
+    "dir": "ltr",
+    "lang": "cn",
+    "orientation": "portrait",
+    "theme_color": "#70B7FD",
+    "background_color": "#fff",
+    "icons": [{
+        "src": "images/icon-48x48.png",
+        "sizes": "48x48",
+        "type": "image/png"
+    }, {
+        "src": "images/apple-touch-icon-57×57.png",
+        "sizes": "57x57",
+        "type": "image/png"
+    }, {
+        "src": "images/apple-touch-icon-72x72.png",
+        "sizes": "72x72",
+        "type": "image/png"
+    }, {
+        "src": "images/icon-96x96.png",
+        "sizes": "96x96",
+        "type": "image/png"
+    }]
+}

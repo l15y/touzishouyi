@@ -4,6 +4,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="js/vue.js"></script>
+
+<link rel="manifest" href="manifest.json">
+
 <link rel="stylesheet" href="css/ELEMENT.css" />
 <script src="js/ELEMENT.js"></script>
 <script src="js/jquery.min.js"></script>
@@ -13,6 +16,23 @@
         background-color: #e9eef3;
         color: #333;
         text-align: center;
+    }
+    
+    .el-slider__runway.show-input {
+        margin-right: 140px;
+        margin-left: 10px;
+    }
+    
+    body {
+        margin-right: 0;
+    }
+    
+    .el-input-number {
+        left: 3em;
+    }
+    
+    .el-slider .el-input-number {
+        left: 0em;
     }
     
     .el-input {
@@ -36,22 +56,22 @@
 <script>
 </script>
 
-<div id="app" v-cloak style="margin-top: 50px;line-height: 3em;">
+<div id="app" v-cloak style="margin-top: 20px;line-height: 3em;">
     <template>
         定存<br>
         投入比例 <el-slider v-model="dc" @input="calc" show-input :format-tooltip="formatTooltip"></el-slider>
         <br>
-        上限 <el-input-number v-model="dc_u" step=0.1></el-input-number>
+        上限 <el-input-number v-model="dc_u" :step=0.1></el-input-number>
         <br>
-        下限 <el-input-number v-model="dc_d" step=0.1></el-input-number>
+        下限 <el-input-number v-model="dc_d" :step=0.1></el-input-number>
         <br>
         <br>
         基金<br>
         投入比例 <el-slider v-model="jj" @input="calc" show-input :format-tooltip="formatTooltip"></el-slider>
         <br>
-        上限 <el-input-number v-model="jj_u" step=0.2></el-input-number>
+        上限 <el-input-number v-model="jj_u" :step=0.2></el-input-number>
         <br>
-        下限 <el-input-number v-model="jj_d" step=0.2></el-input-number>
+        下限 <el-input-number v-model="jj_d" :step=0.2></el-input-number>
         <br>
         <br>
         股票<el-input v-model="gp" :disabled="true"></el-input>
@@ -59,7 +79,6 @@
         <br>
         下限 <el-input-number v-model="gp_d"></el-input-number>
         <el-card class="box-card" style="margin: 0 auto;width: 16em;">
-               
             资产总体回报:
             <br>上限:
             {{(dc*dc_u+jj*jj_u+gp*gp_u)/100}}%
