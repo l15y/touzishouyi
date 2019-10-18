@@ -31,7 +31,7 @@ self.addEventListener('fetch', function(event) {
         caches.match(event.request).then(res => {
             if (res) {
                 setTimeout(() => {
-                    console.log("获取", res.url);
+                    console.log("已缓存", res.url);
 
                 }, 0)
                 return res;
@@ -42,6 +42,10 @@ self.addEventListener('fetch', function(event) {
             return fetch(requestToCache).then(res => {
                 // 请求返回的结果错误 则不缓存
                 if (!res || res.status !== 200) {
+                    setTimeout(() => {
+                        console.log("下载但不缓存", res.url);
+
+                    }, 0)
                     return res;
                 }
                 // 克隆响应
@@ -53,7 +57,7 @@ self.addEventListener('fetch', function(event) {
                     .then(cache => cache.put(requestToCache, responseToCache));
 
                 setTimeout(() => {
-                    console.log("下载", res.url);
+                    console.log("下载并缓存", res.url);
 
                 }, 0)
                 return res;
