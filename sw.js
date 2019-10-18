@@ -31,7 +31,7 @@ self.addEventListener('fetch', function(event) {
         caches.match(event.request).then(res => {
             if (res) {
                 setTimeout(() => {
-                    console.log(res.url);
+                    console.log("获取", res.url);
 
                 }, 0)
                 return res;
@@ -52,6 +52,10 @@ self.addEventListener('fetch', function(event) {
                     .open(SW_VERSION)
                     .then(cache => cache.put(requestToCache, responseToCache));
 
+                setTimeout(() => {
+                    console.log("下载", res.url);
+
+                }, 0)
                 return res;
             });
         })
