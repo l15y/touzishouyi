@@ -14,7 +14,7 @@ self.addEventListener('activate', function(event) {
             caches.keys().then(cacheNames => {
                 return Promise.all(
                     cacheNames.map(cacheName => {
-                        console.log(cacheName, SW_VERSION);
+                        // console.log(cacheName, SW_VERSION);
                         if (cacheName !== SW_VERSION) {
                             return caches.delete(cacheName);
                         }

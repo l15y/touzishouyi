@@ -165,15 +165,15 @@
         savedPrompt = e;
         return false;
     });
-    btn.addEventListener('click', function() {
-        if (savedPrompt) {
-            console.log(savedPrompt);
-            // 异步触发横幅显示，弹出选择框，代替浏览器默认动作
-            savedPrompt.prompt();
-            // 接收选择结果
-            savedPrompt.userChoice.then(result => {
-                console.log(result);
-            });
-        }
-    });
+    // btn.addEventListener('click', function() {
+    //     if (savedPrompt) {
+    //         console.log(savedPrompt);
+    //         // 异步触发横幅显示，弹出选择框，代替浏览器默认动作
+    //         savedPrompt.prompt();
+    //         // 接收选择结果
+    //         savedPrompt.userChoice.then(result => {
+    //             console.log(result);
+    //         });
+    //     }
+    // });
 </script>
