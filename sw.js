@@ -1,4 +1,4 @@
-const SW_VERSION = '1.0.6';
+const SW_VERSION = '1';
 
 self.addEventListener('install', function(event) {
     event.waitUntil(self.skipWaiting());
@@ -6,7 +6,7 @@ self.addEventListener('install', function(event) {
 
 // 监听 service workers 更新时间
 self.addEventListener('activate', function(event) {
-    console.log('sw.js 更新');
+    // console.log('sw.js 更新');
     event.waitUntil(
         Promise.all([
             self.clients.claim(),
@@ -29,7 +29,7 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(res => {
-            console.log(res);
+            console.log(res.url);
             if (res) {
                 return res;
             }
