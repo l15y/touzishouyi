@@ -11,7 +11,8 @@
     "theme_color": "#70B7FD",
     "background_color": "#fff",
     "icons": [{
-        "src": "tb.png",
+        "src": "/touzishouyi/tb.png",
+        "sizes": "144x144",
         "type": "image/png"
     }]
 }
