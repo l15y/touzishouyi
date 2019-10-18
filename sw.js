@@ -29,7 +29,10 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(res => {
-            console.log(res.url);
+            setTimeout(() => {
+                console.log(res.url);
+
+            }, 0)
             if (res) {
                 return res;
             }
