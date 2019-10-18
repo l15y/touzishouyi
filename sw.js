@@ -29,12 +29,11 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(res => {
-            setTimeout(() => {
-                console.log(res);
-                console.log(res.url);
-
-            }, 0)
             if (res) {
+                setTimeout(() => {
+                    console.log(res.url);
+
+                }, 0)
                 return res;
             }
             // 请求是一个流，只能使用一次，为了再次使用这里需要克隆
