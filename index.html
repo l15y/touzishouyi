@@ -141,4 +141,39 @@
                 });
         });
     }
+    // 取消添加到主屏幕
+    window.addEventListener('beforeinstallprompt', function(e) {
+        e.preventDefault();
+        return false;
+    });
+
+    // 添加到主屏幕后响应
+    window.addEventListener('beforeinstallprompt', function(event) {
+        event.userChoice.then(result => {
+            console.log(result);
+            // {outcome: "dismissed", platform: ""} // 取消添加
+            // {outcome: "accepted", platform: "web"} // 完成添加
+        });
+    });
+
+    // 手动添加，要等到符合规格后才能起效
+    let savedPrompt = null; // 用来保存 事件
+    const btn = document.getElementById('btn');
+    // 添加到主屏幕后响应
+    window.addEventListener('beforeinstallprompt', function(e) {
+        e.preventDefault();
+        savedPrompt = e;
+        return false;
+    });
+    btn.addEventListener('click', function() {
+        if (savedPrompt) {
+            console.log(savedPrompt);
+            // 异步触发横幅显示，弹出选择框，代替浏览器默认动作
+            savedPrompt.prompt();
+            // 接收选择结果
+            savedPrompt.userChoice.then(result => {
+                console.log(result);
+            });
+        }
+    });
 </script>
