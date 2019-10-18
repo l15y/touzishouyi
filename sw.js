@@ -30,6 +30,7 @@ self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(res => {
             setTimeout(() => {
+                console.log(res);
                 console.log(res.url);
 
             }, 0)
